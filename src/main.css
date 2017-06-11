@@ -11,3 +11,8 @@
     padding: 5px;
     cursor: pointer;
 }
+.react-contextmenu-item:hover{
+   background: #ecf6fd;
+    color: #108ee9;
+}
+

@@ -2,29 +2,28 @@
 
 //noinspection JSDuplicatedDeclaration
 
-import { Menu, Icon } from 'antd';
+import { Menu, Icon,Popover } from 'antd';
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 import React, {Component} from 'react'
 import 'antd/dist/antd.css';
 import * as ReactDOM from "react-dom";
 import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
+import css from "./main.css"
 const style = {
     margin: 12,
 };
 
-
-
 export default class App extends React.Component {
 
-    constructor(props:any) {
+    constructor(props) {
         super(props);
         this.state = {
             slideIndex: 0,
+            show:false
         };
     }
-
-    handleChange = (value:number) => {
+    handleChange = (value) => {
 
 
         this.setState({
@@ -35,6 +34,7 @@ export default class App extends React.Component {
     handleClick = (e,data)=>{
         console.log(data);
     }
+
     render() {
         return (
             <div>
@@ -50,12 +50,24 @@ export default class App extends React.Component {
 
                             <MenuItemGroup key="g1" title="Item 1">
                                 <Menu.Item key="1">
-                                    <ContextMenuTrigger id="some_unique_identifier">
+                                    <ContextMenuTrigger id="some_unique_identifier" attributes={{
+                                        onContextMenu:()=>{
+                                            this.setState({
+                                                show:true
+                                            })
+                                        }
+                                    }}>
                                     Option 1
                                     </ContextMenuTrigger>
                                 </Menu.Item>
                                 <Menu.Item key="2">
-                                    <ContextMenuTrigger id="some_unique_identifier">
+                                    <ContextMenuTrigger id="some_unique_identifier" attributes={{
+                                        onContextMenu:()=>{
+                                           this.setState({
+                                               show:true
+                                           })
+                                        }
+                                    }}>
                                     Option 2
                                     </ContextMenuTrigger>
                                 </Menu.Item>
@@ -82,24 +94,20 @@ export default class App extends React.Component {
                         </SubMenu>
                     </Menu>
                 <ContextMenu id="some_unique_identifier">
-                    <div style={{borderStyle:"solid",zIndex:9999}} >
                     <MenuItem data={"some_data"} onClick={this.handleClick}>
                         ContextMenu Item 1
                     </MenuItem>
                     <MenuItem data={"some_data"} onClick={this.handleClick}>
                         ContextMenu Item 2
                     </MenuItem>
-                    <MenuItem divider />
                     <MenuItem data={"some_data"} onClick={this.handleClick}>
                         ContextMenu Item 3
                     </MenuItem>
-                    </div>
                 </ContextMenu>
             </div>
 
         );
     }
 }
-
 
 ReactDOM.render(<App/>,document.getElementById("root"));

@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "build": "webpack --config build/webpack.config.js",
-    "dev": "webpack-dev-server  --hot --inline --config build/webpack.config.js",
-    "flow": "flow status"
+    "dev": "webpack-dev-server  --hot --inline --config build/webpack.config.js"
   },
   "dependencies": {
     "babel-preset-flow": "^6.23.0",
@@ -35,8 +34,7 @@
   "babel": {
     "presets": [
       "es2015",
-      "react",
-      "flow"
+      "react"
     ]
   }
 }

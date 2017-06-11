@@ -23,7 +23,7 @@ module.exports = {
             {
                 test:/\.jsx?$/,
                 exclude:/node_modules/,
-                loaders:['react-hot-loader','babel-loader?presets[]=react,presets[]=es2015,presets[]=stage-1,presets[]=flow']
+                loaders:['react-hot-loader','babel-loader?presets[]=react,presets[]=es2015,presets[]=stage-1']
             },
             { test: /\.css$/, loader: 'style-loader!css-loader' },
         ]
